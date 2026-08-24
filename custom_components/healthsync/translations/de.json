@@ -1,0 +1,45 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "HealthSync einrichten",
+        "description": "Es wird eine Webhook-URL für die HealthSync-iPhone-App erzeugt. Nach der Einrichtung erscheint eine Benachrichtigung mit der URL, die du in der App unter Einstellungen → Home Assistant einträgst.\n\nFür jede Person bzw. jedes iPhone legst du einen eigenen Eintrag an — jeder bekommt eine eigene Webhook-URL und eigene Sensoren.",
+        "data": {
+          "name": "Name (z. B. Tim)",
+          "secret": "Gemeinsames Geheimnis (optional)"
+        },
+        "data_description": {
+          "name": "Erscheint im Namen aller Geräte und Sensoren dieses Eintrags. Leer lassen, wenn nur eine Person die App nutzt.",
+          "secret": "Wenn gesetzt, werden Daten ohne dieses Geheimnis abgelehnt. Denselben Wert in den Einstellungen der App eintragen."
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "HealthSync ist bereits eingerichtet."
+    }
+  },
+  "services": {
+    "get_readings": {
+      "name": "Messwerte abrufen",
+      "description": "Gibt alle archivierten Einzelmesswerte einer Metrik zurück, optional auf einen Zeitraum begrenzt.",
+      "fields": {
+        "device_id": {
+          "name": "Gerät",
+          "description": "Das HealthSync-Gerät (die Person), dessen Messwerte abgefragt werden."
+        },
+        "metric": {
+          "name": "Metrik",
+          "description": "Für welche Metrik die Messwerte zurückgegeben werden."
+        },
+        "start": {
+          "name": "Von",
+          "description": "Nur Messwerte ab diesem Zeitpunkt (optional)."
+        },
+        "end": {
+          "name": "Bis",
+          "description": "Nur Messwerte bis zu diesem Zeitpunkt (optional)."
+        }
+      }
+    }
+  }
+}

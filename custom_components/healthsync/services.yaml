@@ -1,0 +1,63 @@
+get_readings:
+  name: Messwerte abrufen
+  description: >-
+    Gibt jeden einzelnen Messwert zurück, den HealthSync für eine Metrik
+    archiviert hat — exakt so, wie Apple Health ihn geliefert hat: echter
+    Wert und Apples eigener Zeitstempel, ohne Mittelung, Rundung oder
+    Gruppierung. Optional auf einen Zeitraum begrenzt.
+  fields:
+    device_id:
+      name: Gerät
+      description: >-
+        Das HealthSync-Gerät (oder HealthSync Workouts), das abgefragt werden
+        soll — beide gehören zur selben Person.
+      required: true
+      selector:
+        device:
+          integration: healthsync
+    metric:
+      name: Metrik
+      description: Für welche Metrik die Messwerte zurückgegeben werden.
+      required: true
+      selector:
+        select:
+          options:
+            - activeCalories
+            - atrialFibrillationBurden
+            - bloodGlucose
+            - bloodPressureDiastolic
+            - bloodPressureSystolic
+            - bodyFatPercentage
+            - bodyMassIndex
+            - bodyTemperature
+            - distanceWalkingRunning
+            - exerciseTime
+            - flightsClimbed
+            - heartRate
+            - heartRateRecoveryOneMinute
+            - heartRateVariability
+            - height
+            - leanBodyMass
+            - oxygenSaturation
+            - respiratoryRate
+            - restingEnergy
+            - restingHeartRate
+            - sleep
+            - steps
+            - vo2Max
+            - waistCircumference
+            - walkingHeartRateAverage
+            - weight
+            - workouts
+    start:
+      name: Von
+      description: Nur Messwerte ab diesem Zeitpunkt.
+      required: false
+      selector:
+        datetime:
+    end:
+      name: Bis
+      description: Nur Messwerte bis zu diesem Zeitpunkt.
+      required: false
+      selector:
+        datetime:
